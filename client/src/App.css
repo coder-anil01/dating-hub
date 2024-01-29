@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
+/* NAVBAR */
+.navbar-top{
+    width: 100%;
+    margin-bottom: 50px;
+    z-index: 999;
+}
+.navbar-top-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: aqua;
+    padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-top-logo-div{
+    text-decoration: none;
+    font-family: 'Bungee Spice', sans-serif;
+    font-size: 30px;
+}
+.navbar-top-right{
+    display: flex;
+}
+.navbar-top-right a{
+    cursor: pointer;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+}
+
+
+/* Navbar Buttom */
+.navbar-buttom{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    display: none;
+    justify-content: space-around;
+    grid-template-columns: 1fr fr 1fr;
+}
+.navbar-button-item{
+    color: white;
+    padding: 5px 20px;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+}
+.active{
+    color: #acacac !important;
+}
+
+
+/* => MOBILE */
+@media only screen and (max-width: 600px) {
+.navbar-top-right{
+    display: none;
+}
+/* Navbar Buttom */
+.navbar-buttom{
+    display: flex;
+}
+}
+
+/* FOOTER */
+.footer{
+    display: none;
+}
+
+/* => MOBILE */
+@media only screen and (max-width: 600px) {
+    .footer{
+        display: block;
+        height: 50px;
+    }
+}

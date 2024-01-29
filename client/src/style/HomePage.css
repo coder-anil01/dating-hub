@@ -1,0 +1,60 @@
+.homepage{}
+.homepage-hading{
+    text-align: center;
+}
+.homepage-grils-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.homepage-grils-card{
+    margin: 10px 0;
+    background-color: #fcd9df;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.homepage-grils-image-container{
+    aspect-ratio: 2/3;
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+.homepage-grils-image{
+    width: 95%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.homepage-grils-image:hover{
+    width: 100%;
+}
+.homepage-price{
+    font-size: 18px;
+    padding: 5px 20px;
+    font-weight: 550;
+    color: rgb(248, 12, 181);
+    text-decoration: none;
+}
+.homepage-grils-call-button{
+    border: none;
+    width: 100%;
+    padding: 10px;
+    background-color: #9bfd07;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+.homepage-grils-container{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+}
+@media only screen and (max-width: 600px) {
+.homepage-grils-container{
+    grid-template-columns: 1fr 1fr;
+}
+}
