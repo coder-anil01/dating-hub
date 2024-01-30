@@ -1,4 +1,4 @@
-import GirlModel from "../model/GirlModel.js";
+import GirlModel from "../model/girlModel.js";
 
 //=>  CREATE
 export const createGirl = async (req, res) => {
