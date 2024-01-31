@@ -21,7 +21,7 @@ const HomePage = () => {
         {data?.map((e) => (
         <Link to={`/girl/${e?._id}`} className='homepage-grils-card' key={e._id}>
           <div className='homepage-grils-image-container'>
-            <img className='homepage-grils-image' src={e?.image} alt="" />
+            <img loading='lazy' className='homepage-grils-image' src={e?.image} alt="" />
           </div>
           <div className='homepage-price'> ₹{e?.price}  Only</div>
           <>

@@ -5,11 +5,14 @@ import Qrpayment from '../media/paymentqr.png'
 import { Modal } from 'antd';
 import {FaUser, FaLock} from 'react-icons/fa'
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import QRCode from "react-qr-code";
+
 
 const GirlsDetail = () => {
 
   const params = useParams();
+  const navigate = useNavigate();
   const productid = params?.id;
 
   const [girl, setGirl] = useState([]);
@@ -20,14 +23,7 @@ const GirlsDetail = () => {
   const [userCreateModel, setUserCreateModel] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-const vpa = '6203493183@axl';
-const amount = '10';
-const transactionId = '123456789';
-const name = 'John Doe'; 
-const description = 'Payment for Product X';
-
-  const upiLink = `upi://pay?pa=${encodeURIComponent(vpa)}&pn=${encodeURIComponent(name)}&mc=yourMerchantCode&tid=${encodeURIComponent(transactionId)}&tr=${encodeURIComponent(transactionId)}&tn=${encodeURIComponent(description)}&am=${amount}&cu=INR&url=https://your-callback-url.com`;
+  const [bookgirl, setBookgirl] = useState('Book Girl');
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -35,6 +31,7 @@ const description = 'Payment for Product X';
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setUserCreateModel(false);
   };
 
   const getProfile = async() => {
@@ -49,8 +46,12 @@ const description = 'Payment for Product X';
     getProfile();
   },[])
 
-  const handleCreateUser = async(e) => {
-    e.preventDefault();
+  const vpa = '6203493183@axl';
+  const name = 'John Doe'; 
+  const upiLink = `upi://pay?pa=${encodeURIComponent(vpa)}&pn=${encodeURIComponent(name)}&mc=yourMerchantCode&tid=${encodeURIComponent(girl?._id)}&tr=${encodeURIComponent(girl?._id)}&am=${girl?.price}&cu=INR&url=https://your-callback-url.com`;
+
+
+  const handleCreateUser = async() => {
     try {
       const {data} = await axios.post('/api/v1/user/create', {username, password});
       if(data?.user){
@@ -81,16 +82,21 @@ const description = 'Payment for Product X';
   };
 
   const handleOrder = async(e) => {
-    e.preventDefault();
+    if(e){ e.preventDefault();}
     try {
       const jsonuser = await localStorage.getItem("user");
       const user = JSON.parse(jsonuser);
       if(!jsonuser){
         return setUserCreateModel(true);
       }
+      setBookgirl('Wating...')
       const {data} = await axios.post('/api/v1/order/create', {user: user?._id, product: productid, price: girl?.price, message, payscreenshot})
+      if(data.success){
+        navigate('/order')
+      }
     } catch (error) {
-      
+      setBookgirl('Book Girl');
+      toast.error("Network Problem");
     }
   }
 
@@ -100,12 +106,12 @@ const description = 'Payment for Product X';
       <div className='girl-detail-continer'>
         <div className='girl-detail-destop-images'></div>
         <div className='girl-detail-left'>
-          <img className='girl-detail-b-image' src={image ? image : girl?.image} alt="" />
+          <img loading='lazy' className='girl-detail-b-image' src={image ? image : girl?.image} alt="" />
           <div className='girl-detail-images'>
-            <img className='girl-detail-sm-image' src={girl.image} onClick={()=> setImage(girl.image)} alt="" />
-            <img className='girl-detail-sm-image' src={girl?.images?.[0]} onClick={()=> setImage(girl?.images?.[0])} alt="" />
-            <img className='girl-detail-sm-image' src={girl?.images?.[1]} onClick={()=> setImage(girl?.images?.[1])} alt="" />
-            <img className='girl-detail-sm-image' src={girl?.images?.[2]} onClick={()=> setImage(girl?.images?.[2])} alt="" />
+            <img loading='lazy' className='girl-detail-sm-image' src={girl.image} onClick={()=> setImage(girl.image)} alt="" />
+            <img loading='lazy' className='girl-detail-sm-image' src={girl?.images?.[0]} onClick={()=> setImage(girl?.images?.[0])} alt="" />
+            <img loading='lazy' className='girl-detail-sm-image' src={girl?.images?.[1]} onClick={()=> setImage(girl?.images?.[1])} alt="" />
+            <img loading='lazy' className='girl-detail-sm-image' src={girl?.images?.[2]} onClick={()=> setImage(girl?.images?.[2])} alt="" />
           </div>
         </div>
         <div className='girl-detail-right'>
@@ -118,7 +124,6 @@ const description = 'Payment for Product X';
           <div>
             <button className='girl-detail-payment-button'>
               <a href={upiLink} rel='noopener noreferrer'> UPI - Pay {girl?.price}</a>
-              {/* <a href={`upi://pay?pa=6203283183@axl&pn=Date_hub&am=${girl?.price}&cu=INR`} rel='noopener noreferrer'> UPI - Pay {girl?.price}</a> */}
             </button>
             <div className='girl-detail-payment-or-container'>
               <div className='girl-detail-payment-or'>or</div>
@@ -138,13 +143,13 @@ const description = 'Payment for Product X';
               onChange={(e)=> setMessage(e.target.value)}
               placeholder='Set Video Call Time'
               />
-            <button type='submit' className='girl-detail-book'>Book Girl</button>
+            <button type='submit' className='girl-detail-book'>{bookgirl}</button>
           </form>
         </div>
     </div>
     </div>
     <Modal title="QR CODE" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={false}>
-      <img className='girl-detail-payment-qr' src={Qrpayment} alt="" />
+      <QRCode value={upiLink} className='girl-detail-payment-qr' />
     </Modal>
 
 {/* CREATE USER */}

@@ -1,0 +1,69 @@
+.order{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+.order-container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.order-card{
+    width: 80vw;
+    background-color: #c4c3c3;
+    margin: 10px 0;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 20vw auto;
+}
+.order-image{
+    max-width: 15vw;
+}
+.order-message{}
+.order-id{
+    color: rgb(1, 67, 128);
+}
+.order-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.order-right div{
+    margin: 5px 0;
+}
+.order-payment{}
+.order-videocall-icon{
+    font-size: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .order-card{
+        width: 100vw;
+        padding: 10px 0;
+        grid-template-columns: 110px auto;
+    }
+    .order-image{
+        min-width: 100px;
+    }
+    .order-message{
+        font-size: 14px;
+    }
+    .order-id{
+        color: rgb(1, 67, 128);
+        font-size: 12px;
+    }
+    .order-right div{
+        margin: 5px 0;
+    }
+    .order-payment{}
+    .order-videocall-icon{
+
+    }
+}

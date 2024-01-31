@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import MyOrder from './pages/user/MyOrder'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/girl/:id' element={<GirlsDetail/>}/>
         <Route path='/video' element={<Video/>}/>
+        <Route path='/order' element={<MyOrder/>}/>
       </Routes>
       <Footer/>
     </Router>

@@ -27,3 +27,21 @@ export const createOrder = async(req, res) => {
         })
     }
 }
+
+// => Get Order
+export const getOrder = async(req, res) => {
+    const {id} = req.params
+    try {
+        const orders = await orderModel.find({user: id}).populate('product').select('-user')
+        res.status(200).send({
+            success: true,
+            total: orders.length,
+            orders
+        })
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Internal Server Error",
+        })
+    }
+}

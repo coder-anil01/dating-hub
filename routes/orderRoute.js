@@ -1,8 +1,14 @@
 import express from "express";
-import { createOrder } from "../controller/orderController.js";
+import { createOrder, getOrder } from "../controller/orderController.js";
+import multer from "multer";
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const route = express.Router();
 
-route.post('/create', createOrder)
+route.post('/create', upload.single('file'), createOrder);
+
+route.get('/get/:id', getOrder);
 
 export default route;
