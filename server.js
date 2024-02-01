@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true, limit: '30mb' }));
 app.use(cors());
 app.use(morgan('dev'));
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8080;
 
 app.use('/api/v1/girl', girlRoute)
 app.use('/api/v1/user', userRoute)
