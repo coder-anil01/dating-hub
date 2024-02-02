@@ -1,0 +1,104 @@
+.admin-dashbord{}
+.admin-profile-add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.admin-profile-heading{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.admin-profile-form{
+    display: flex;
+    flex-direction: column;
+    width: calc(40vw + 200px);
+    min-width: 300px;
+}
+.admin-profile-input{
+    padding: 13px 20px;
+    margin: 15px 0;
+    font-size: 17px;
+    border: none;
+    border-bottom: 1px solid black !important;
+    background: #e0e0e0;
+    border-radius: 8px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 7px #929292,
+            inset -5px -5px 7px #ffffff;
+}
+.image-upload-area{
+    margin-top: 30px;
+    border: 3px dashed black;
+    text-align: center;
+    width: 100%;
+    height: 150px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.image-upload-icon{
+    font-size: 80px;
+}
+.admin-profile-submit{
+    padding: 10px;
+    font-size: 18px;
+    margin: 20px 0;
+    border: none;
+    color: #03016b;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 7px;
+    background: #e0e0e0;
+    box-shadow: inset -5px -5px 11px #8b8b8b,
+                inset 5px 5px 11px #ffffff;
+}
+
+.admin-show-image-container{
+    /* margin-top: 30px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.admin-show-image-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-show-image{
+    width: 100px;
+    height: 140px;
+    object-fit: contain;
+}
+.admin-process-bar{
+    width: 100px;
+    margin: auto;
+}
+
+/* MOBILE */
+@media only screen and (max-width:600px) {
+
+.admin-profile-form{
+    width: 90vw;
+}
+
+
+.admin-show-image-container{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.admin-show-image-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-show-image{
+    width: 120px;
+    height: 150px;
+}
+.admin-process-bar{
+    width: 100px;
+    margin: auto;
+}
+}

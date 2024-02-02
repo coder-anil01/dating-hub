@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import '../style/GirlDetail.css'
 import axios from 'axios'
-import Qrpayment from '../media/paymentqr.png'
 import { Modal } from 'antd';
 import {FaUser, FaLock} from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import QRCode from "react-qr-code";
-
+import Bhimimg from '../media/bhim.png';
+import Gpayimg from '../media/gpay.png'
+import Paytmimg from '../media/paytm.png'
+import Phonepayimg from '../media/phonepay.png'
 
 const GirlsDetail = () => {
 
@@ -17,7 +19,6 @@ const GirlsDetail = () => {
 
   const [girl, setGirl] = useState([]);
   const [image, setImage] = useState("");
-  const [message, setMessage] = useState("");
   const [payscreenshot, setPayscreenshot] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userCreateModel, setUserCreateModel] = useState(false);
@@ -44,12 +45,12 @@ const GirlsDetail = () => {
   }
   useEffect(()=>{
     getProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const vpa = '6203493183@axl';
-  const name = 'John Doe'; 
+  const vpa = process.env.REACT_APP_name;
+  const name = process.env.REACT_APP_name; 
   const upiLink = `upi://pay?pa=${encodeURIComponent(vpa)}&pn=${encodeURIComponent(name)}&mc=yourMerchantCode&tid=${encodeURIComponent(girl?._id)}&tr=${encodeURIComponent(girl?._id)}&am=${girl?.price}&cu=INR&url=https://your-callback-url.com`;
-
 
   const handleCreateUser = async() => {
     try {
@@ -90,7 +91,7 @@ const GirlsDetail = () => {
         return setUserCreateModel(true);
       }
       setBookgirl('Wating...')
-      const {data} = await axios.post('/api/v1/order/create', {user: user?._id, product: productid, price: girl?.price, message, payscreenshot})
+      const {data} = await axios.post('/api/v1/order/create', {user: user?._id, product: productid, price: girl?.price, payscreenshot})
       if(data.success){
         navigate('/order')
       }
@@ -114,6 +115,9 @@ const GirlsDetail = () => {
             <img loading='lazy' className='girl-detail-sm-image' src={girl?.images?.[2]} onClick={()=> setImage(girl?.images?.[2])} alt="" />
           </div>
         </div>
+
+{/* Right */}
+
         <div className='girl-detail-right'>
           <h3>@{girl?.username}</h3>
           <div className='girl-detail-price'>Rs:- {girl?.price}/One Time</div>
@@ -121,9 +125,17 @@ const GirlsDetail = () => {
           <div className='girl-detail-des-tag' >★》 सबकुछ खोल कर दिखाऊॅगी</div>
           <div className='girl-detail-des-tag' >★》 में आपको पूरा खुश दूंगी</div>
 
-          <div>
+          <div className='girl-detail-payment-method'>
+            <h3>Payment Method</h3>
             <button className='girl-detail-payment-button'>
-              <a href={upiLink} rel='noopener noreferrer'> UPI - Pay {girl?.price}</a>
+              <div className='girl-detail-payment-button-img' >
+                <img src={Phonepayimg} alt="Phonepayimg" />
+                <img src={Bhimimg} alt="Bhimimg" />
+                <img src={Gpayimg} alt="Gpayimg" />
+                <img src={Paytmimg} alt="Paytmimg" />
+              </div>
+
+              {/* <a href={upiLink} rel='noopener noreferrer'> UPI </a> */}
             </button>
             <div className='girl-detail-payment-or-container'>
               <div className='girl-detail-payment-or'>or</div>
@@ -138,11 +150,6 @@ const GirlsDetail = () => {
               onChange={handleImageChange}
               required />
 
-            <input type="text"
-              className='girl-detail-payment-input'
-              onChange={(e)=> setMessage(e.target.value)}
-              placeholder='Set Video Call Time'
-              />
             <button type='submit' className='girl-detail-book'>{bookgirl}</button>
           </form>
         </div>

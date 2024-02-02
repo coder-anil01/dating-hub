@@ -1,0 +1,20 @@
+.admin-order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin-order-card{
+    display: grid;
+    grid-template-columns: 15vw auto;
+    background-color: #c7c7c7;
+    padding: 10px 20px;
+    width: 90%;
+    margin: 10px 0;
+}
+.admin-order-right{}
+.admin-order-id{}
+.admin-order-pay-image{
+    width: 10vw;
+}
+.admin-order-message{}

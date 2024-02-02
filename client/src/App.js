@@ -9,6 +9,12 @@ import Footer from './components/Footer'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import MyOrder from './pages/user/MyOrder'
+import Dashbord from './pages/admin/Dashbord'
+import AdminOrder from './pages/admin/AdminOrder'
+import AdminRoutes from './routes/AdminRoutes'
+import CreateProfile from './pages/admin/CreateProfile'
+import AllUsers from './pages/admin/AllUsers'
+import Logout from './pages/admin/Logout'
 
 const App = () => {
   return (
@@ -23,6 +29,16 @@ const App = () => {
         <Route path='/girl/:id' element={<GirlsDetail/>}/>
         <Route path='/video' element={<Video/>}/>
         <Route path='/order' element={<MyOrder/>}/>
+
+{/* ADmin */}
+        <Route path='/admin' element={<AdminRoutes/>}>
+          <Route path='' element={<Dashbord/>}/>
+          <Route path='create' element={<CreateProfile/>}/>
+          <Route path='orders' element={<AdminOrder/>}/>
+          <Route path='allusers' element={<AllUsers/>}/>
+          <Route path='logout' element={<Logout/>}/>
+        </Route>
+
       </Routes>
       <Footer/>
     </Router>

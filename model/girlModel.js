@@ -10,6 +10,9 @@ const girlSchema = new mongoose.Schema({
     images:[{
         type: String,
     },],
+    videourl:{
+        type: String,
+    },
     price:{
         type: Number,
     }

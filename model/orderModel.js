@@ -12,11 +12,12 @@ const orderSchema = new mongoose.Schema({
     price:{
         type: Number,
     },
-    message:{
-        type: String,
-    },
     payscreenshot:{
         type:String,
+    },
+    status:{
+        type: String,
+        default: 'Please Wait...',
     }
 },{timestamps:true});
 

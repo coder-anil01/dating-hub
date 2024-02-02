@@ -3,8 +3,8 @@ import GirlModel from "../model/girlModel.js";
 //=>  CREATE
 export const createGirl = async (req, res) => {
     try {
-        const {username, image, images, price} = req.body;
-        const girl = await new GirlModel({username, image, images, price}).save();
+        const {username, image, images, videourl, price} = req.body;
+        const girl = await new GirlModel({username, image, images, videourl, price}).save();
         res.status(200).send({
             success: true,
             message: "Profile Created Successfully",
@@ -21,7 +21,7 @@ export const createGirl = async (req, res) => {
 //=> GET ALL
 export const getallProfile = async (req, res) => {
     try {
-        const girls = await GirlModel.find().select("-images");
+        const girls = await GirlModel.find().select("-images -videour").sort({ createdAt: -1});
         res.status(200).send({
             success: true,
             Total: girls.length,

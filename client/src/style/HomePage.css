@@ -10,7 +10,7 @@
 }
 .homepage-grils-card{
     margin: 10px 0;
-    background-color: #fcd9df;
+    background-color: #e3e3e3;
     border-radius: 5px;
     text-decoration: none;
 }
@@ -34,14 +34,14 @@
     font-size: 18px;
     padding: 5px 20px;
     font-weight: 550;
-    color: rgb(248, 12, 181);
+    color: #cf0094;
     text-decoration: none;
 }
 .homepage-grils-call-button{
     border: none;
     width: 100%;
     padding: 10px;
-    background-color: #9bfd07;
+    background-color: #fe8add;
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;

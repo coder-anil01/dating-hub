@@ -16,17 +16,15 @@ const HomePage = () => {
   },[])
   return (
     <div className='homepage'>
-      <h2 className='homepage-hading'>Adult Date With Girls</h2>
+      <h2 className='homepage-hading'>Adult Video Call With Girls</h2>
       <div className='homepage-grils-container'>
         {data?.map((e) => (
         <Link to={`/girl/${e?._id}`} className='homepage-grils-card' key={e._id}>
           <div className='homepage-grils-image-container'>
             <img loading='lazy' className='homepage-grils-image' src={e?.image} alt="" />
           </div>
-          <div className='homepage-price'> ₹{e?.price}  Only</div>
-          <>
+          <div className='homepage-price'> ₹ {e?.price}</div>
             <button className='homepage-grils-call-button'>View</button>
-          </>
         </Link>
         ))}
       </div>

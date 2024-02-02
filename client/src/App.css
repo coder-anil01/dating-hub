@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 
+.active{
+    color: white !important;
+    background-color: black !important;
+}
+
 /* NAVBAR */
 .navbar-top{
     width: 100%;
@@ -51,9 +56,6 @@
     font-size: 13px;
     text-align: center;
     text-decoration: none;
-}
-.active{
-    color: #acacac !important;
 }
 
 
