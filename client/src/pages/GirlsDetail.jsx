@@ -48,8 +48,8 @@ const GirlsDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const vpa = process.env.REACT_APP_name;
-  const name = process.env.REACT_APP_name; 
+  const vpa = "6203493183@axl";
+  const name = "Anil Kumar"; 
   const upiLink = `upi://pay?pa=${encodeURIComponent(vpa)}&pn=${encodeURIComponent(name)}&mc=yourMerchantCode&tid=${encodeURIComponent(girl?._id)}&tr=${encodeURIComponent(girl?._id)}&am=${girl?.price}&cu=INR&url=https://your-callback-url.com`;
 
   const handleCreateUser = async() => {
@@ -93,7 +93,7 @@ const GirlsDetail = () => {
       setBookgirl('Wating...')
       const {data} = await axios.post('/api/v1/order/create', {user: user?._id, product: productid, price: girl?.price, payscreenshot})
       if(data.success){
-        navigate('/order')
+        navigate('user/order')
       }
     } catch (error) {
       setBookgirl('Book Girl');
@@ -121,21 +121,26 @@ const GirlsDetail = () => {
         <div className='girl-detail-right'>
           <h3>@{girl?.username}</h3>
           <div className='girl-detail-price'>Rs:- {girl?.price}/One Time</div>
+          <div className='girl-detail-des-tag'>★》 Full open Video Call</div>
+          <div className='girl-detail-des-tag'>★》 I will give you physical satisfaction online</div>
+          <div className='girl-detail-des-tag'>★》 you will see everything up and down</div>
+          <div className='girl-detail-des-tag'>★》 physical satisfaction providing</div>
           <div className='girl-detail-des-tag'>★》 में आपको ऑनलाइन शारीरिक संतुष्टि दूंगी</div>
           <div className='girl-detail-des-tag' >★》 सबकुछ खोल कर दिखाऊॅगी</div>
           <div className='girl-detail-des-tag' >★》 में आपको पूरा खुश दूंगी</div>
+          <div className='girl-detail-des-tag' >★》 मैं आपके कॉल का इंतजार कर रही हू।</div>
 
           <div className='girl-detail-payment-method'>
             <h3>Payment Method</h3>
             <button className='girl-detail-payment-button'>
-              <div className='girl-detail-payment-button-img' >
+              <marquee className='girl-detail-payment-button-img' >
                 <img src={Phonepayimg} alt="Phonepayimg" />
                 <img src={Bhimimg} alt="Bhimimg" />
                 <img src={Gpayimg} alt="Gpayimg" />
                 <img src={Paytmimg} alt="Paytmimg" />
-              </div>
+              </marquee>
 
-              {/* <a href={upiLink} rel='noopener noreferrer'> UPI </a> */}
+              <a href={upiLink} rel='noopener noreferrer'> UPI </a>
             </button>
             <div className='girl-detail-payment-or-container'>
               <div className='girl-detail-payment-or'>or</div>

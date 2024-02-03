@@ -51,3 +51,20 @@ export const getOneProfile = async (req, res) => {
         })
     }
 }
+
+//=> GET ONE
+export const oneProfileDelete = async (req, res) => {
+    const {id} = req.params;
+    console.log(id)
+    try {
+        const girl = await GirlModel.findByIdAndDelete(id);
+        res.status(200).send({
+            success: true,
+        })
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Internal Server Error",
+        })
+    }
+}

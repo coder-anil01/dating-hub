@@ -30,8 +30,7 @@
 .homepage-grils-image:hover{
     width: 100%;
 }
-.homepage-price{
-    font-size: 18px;
+.homepage-username{
     padding: 5px 20px;
     font-weight: 550;
     color: #cf0094;
@@ -41,11 +40,12 @@
     border: none;
     width: 100%;
     padding: 10px;
-    background-color: #fe8add;
+    background-color: green;
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;
     cursor: pointer;
+    color: white;
 }
 
 @media only screen and (max-width: 900px) {

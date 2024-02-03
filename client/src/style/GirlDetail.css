@@ -33,6 +33,10 @@
 .girl-detail-right{
     display: flex;
     flex-direction: column;
+    margin: 10px 0;
+}
+.girl-detail-right div{
+    margin: 10px 0;
 }
 .girl-detail-price{
     color: green;
@@ -55,17 +59,21 @@
 .girl-detail-payment-button-qr,
 .girl-detail-payment-button{
     border: none;
-    padding: 5px 10px;
+    padding: 5px 0;
     border-radius: 10px;
     width: 200px;
     margin: 15px 0;
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .girl-detail-payment-button-img{
     display: flex;
     justify-content: space-evenly;
+    width: 50px;
 }
 .girl-detail-payment-button-img img{
     width: 50px;
@@ -145,6 +153,9 @@
     object-fit: contain;
 }
 .girl-detail-right{
+    width: 84vw;
+}
+.girl-detail-right div{
     width: 84vw;
 }
 } 

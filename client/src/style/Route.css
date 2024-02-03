@@ -1,0 +1,42 @@
+.user-Profile-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.user-Profile-home h2{
+    color: green;
+}
+.user-Profile-home div{
+    margin: 20px 0;
+}
+
+.user-profile{}
+.user-Profile h2{
+    text-align: center;
+}
+.user-Profile div{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.user-route{
+    width: 100%;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user-route a{
+    border: none;
+    background-color: green;
+    padding: 10px 20px;
+    margin: 20px auto;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    width: 50vw;
+    max-width: 400px;
+}

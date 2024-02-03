@@ -15,6 +15,11 @@ import AdminRoutes from './routes/AdminRoutes'
 import CreateProfile from './pages/admin/CreateProfile'
 import AllUsers from './pages/admin/AllUsers'
 import Logout from './pages/admin/Logout'
+import AllGirls from './pages/admin/AllGirls'
+import UserRoutes from './routes/UserRoutes'
+import Registation from './pages/Registation'
+import Login from './pages/Login'
+import UserProfile from './pages/user/UserProfile'
 
 const App = () => {
   return (
@@ -28,12 +33,21 @@ const App = () => {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/girl/:id' element={<GirlsDetail/>}/>
         <Route path='/video' element={<Video/>}/>
-        <Route path='/order' element={<MyOrder/>}/>
+        <Route path='/allgirl' element={<AllGirls/>}/>
+        <Route path='/register' element={<Registation/>}/>
+        <Route path='/login' element={<Login/>}/>
+
+{/* USER */}
+        <Route path='/user' element={<UserRoutes/>}>
+          <Route path='' element={<UserProfile/>}/>
+          <Route path='order' element={<MyOrder/>}/>
+        </Route>
 
 {/* ADmin */}
         <Route path='/admin' element={<AdminRoutes/>}>
           <Route path='' element={<Dashbord/>}/>
           <Route path='create' element={<CreateProfile/>}/>
+          <Route path='allgirl' element={<AllGirls/>}/>
           <Route path='orders' element={<AdminOrder/>}/>
           <Route path='allusers' element={<AllUsers/>}/>
           <Route path='logout' element={<Logout/>}/>
